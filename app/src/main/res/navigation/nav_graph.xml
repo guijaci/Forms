@@ -3,26 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/ListFormFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="io.citrino.forms.view.FormFragment"
-        android:label="@string/first_fragment_label"
+        android:id="@+id/ListFormFragment"
+        android:name="io.citrino.forms.view.FormsListFragment"
+        android:label="@string/list_forms_fragment_label"
         tools:layout="@layout/fragment_list_forms">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_edit_form_in_list"
+            app:destination="@id/FormFragment"
+            app:popUpTo="@id/ListFormFragment" >
+        </action>
     </fragment>
+
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="io.citrino.forms.view.FormsListFragment"
-        android:label="@string/second_fragment_label"
+        android:id="@+id/FormFragment"
+        android:name="io.citrino.forms.view.FormFragment"
+        android:label="@string/form_fragment_edit_label"
         tools:layout="@layout/fragment_form">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_form_saved_from_list"
+            app:destination="@id/ListFormFragment" />
     </fragment>
 </navigation>

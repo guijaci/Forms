@@ -50,18 +50,23 @@
 
 package io.citrino.forms.view
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
+import io.citrino.forms.MainActivity
 import io.citrino.forms.R
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_form.*
 
 /**
  * @author Guilherme Jacichen <gui.jaci@gmail.com>
- * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FormFragment : Fragment() {
 
@@ -70,14 +75,34 @@ class FormFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_forms, container, false)
+        return inflater.inflate(R.layout.fragment_form, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            android.R.id.home -> findNavController().navigateUp()
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        with(context as MainActivity) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            fab.hide()
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        with(activity as MainActivity){
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
         }
     }
 }
