@@ -25,7 +25,7 @@
  ******************************************************************************/
 
 
-package io.citrino.forms
+package io.citrino.forms.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -34,6 +34,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import io.citrino.forms.R
 
 /**
  * @author Guilherme Jacichen <gui.jaci@gmail.com>

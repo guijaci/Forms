@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="io.citrino.forms.FormFragment"
+        android:name="io.citrino.forms.view.FormFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_list_forms">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="io.citrino.forms.FormsListFragment"
+        android:name="io.citrino.forms.view.FormsListFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_form">
 
